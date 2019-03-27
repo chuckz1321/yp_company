@@ -1,0 +1,27 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://ypserver.mybluemix.net/eureka
+  instance:
+    hostname: localhost
+    metadataMap:
+      instanceId: yp_company
+
+spring:
+  application:
+    name: yp_company
+  datasource:
+    url: jdbc:db2://dashdb-txn-sbox-yp-dal09-03.services.dal.bluemix.net:50000/BLUDB
+    username: shl72052
+    password: 0v3lq9nbmh@whfd0
+    driver-class-name: com.ibm.db2.jcc.DB2Driver
+
+server:
+  port: 8769
+
+---
+spring:
+  profiles: cloud
+eureka:
+  instance:
+    nonSecurePort: 80

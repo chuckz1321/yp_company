@@ -21,7 +21,6 @@ public class CompanyController {
     @RequestMapping(value = "/search", method = RequestMethod.POST)
     @ResponseBody
     public List<Company> processQuery(@RequestParam String query){
-        if(query == null || query =="") return new ArrayList<Company>();
         String[] subqueries = query.split("&");
         String state = "";
         String city = "";

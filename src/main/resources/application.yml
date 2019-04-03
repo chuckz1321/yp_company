@@ -12,13 +12,22 @@ spring:
     name: yp_company
   datasource:
     url: jdbc:db2://dashdb-txn-sbox-yp-dal09-03.services.dal.bluemix.net:50000/BLUDB
-    username: shl72052
-    password: 0v3lq9nbmh@whfd0
+    username: nkb13021
+    password: 1z4792^nfmtf1s53
     driver-class-name: com.ibm.db2.jcc.DB2Driver
 
 server:
   port: 8769
 
+mybatis:
+  mapper-locations: classpath:CompanyMapper.xml
+
+logging:
+  level:
+    com:
+      example:
+        yp_company:
+          dao: debug
 ---
 spring:
   profiles: cloud

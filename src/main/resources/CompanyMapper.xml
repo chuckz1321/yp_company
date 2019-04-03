@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.yp_company.dao.CompanyDao">
+    <resultMap id="company" type="com.example.yp_company.Entity.Company">
+        <result column="ID" jdbcType="VARCHAR" property="id"/>
+        <result column="RANK" jdbcType="INTEGER" property="rank"/>
+        <result column="CITY" jdbcType="VARCHAR" property="city"/>
+        <result column="WEBSITE" jdbcType="VARCHAR" property="website" />
+        <result column="STATE" jdbcType="VARCHAR" property="state"/>
+        <result column="FOUNDED" jdbcType="VARCHAR" property="founded"/>
+        <result column="INDUSTRY" jdbcType="VARCHAR" property="industry" />
+    </resultMap>
+    <select id="getCompanyListByMultipleValues" resultMap="company">
+        select *
+        from COMPANY
+        where 1=1
+        <if test="city!=''">
+            and lower(CITY,'en_US')=lower(#{city},'en_US')
+        </if>
+        <if test="state!=''">
+            and lower(STATE,'en_US')=lower(#{state},'en_US')
+        </if>
+        <if test="founded!=''">
+            and lower(FOUNDED,'en_US')=lower(#{founded},'en_US')
+        </if>
+        order by RANK
+    </select>
+</mapper>
